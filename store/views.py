@@ -7,7 +7,6 @@ from . models import Product
 def store(request, category_slug=None):
     categories = None
     products = None
-    
     if category_slug != None:
         categories = get_object_or_404(Category, slug=category_slug)
         products = Product.objects.filter(category=categories, is_available=True)
@@ -21,3 +20,6 @@ def store(request, category_slug=None):
     }
     
     return render(request, 'store/store.html', context)
+
+
+
