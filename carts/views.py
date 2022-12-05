@@ -11,7 +11,8 @@ def _cart_id(request):
     return cart
 
 def cart(request, cart_items=None, total=0, quantity=0):
-    
+    tax = 0
+    grand_total=0
     try:
         cart = Cart.objects.get(cart_id =_cart_id(request))
         cart_items = CartItem.objects.filter(cart=cart, is_active=True)
